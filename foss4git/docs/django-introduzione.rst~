@@ -326,24 +326,13 @@ Un semplice modello
 ===================
     Un modello per rappresentare avvistamenti di animali.
 
-
-.. sidebar:: Animali
-
-    .. image :: images/foto/lupo.jpg
-        :scale: 10%
-
-    .. image :: images/foto/volpe.jpg
-        :scale: 20%
-
-    .. image :: images/foto/orso.jpg
-        :scale: 20% 
-
 Animale:
     * nome
     
 Avvistamento:
     * animale (chiave esterna)
     * data
+    * note
 
 Un semplice modello
 ===================
