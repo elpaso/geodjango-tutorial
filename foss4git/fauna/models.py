@@ -4,7 +4,7 @@ from django.contrib.gis.db import models as gismodels
 # modelli
 class Animale(models.Model):
     """Modello per rappresentare gli animali"""
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50, unique = True)
     foto = models.ImageField(upload_to='animali.foto')
 
     def __unicode__(self):
@@ -34,7 +34,7 @@ class Avvistamento(gismodels.Model):
     note = gismodels.TextField()
     interesse = gismodels.IntegerField(choices=LIVELLI_INTERESSE)
     animale = gismodels.ForeignKey(Animale)
-    geometry = gismodels.PointField(srid=4326) 
+    geometry = gismodels.PointField(srid=4326)
     objects = gismodels.GeoManager()
 
     def __unicode__(self):
@@ -48,7 +48,7 @@ class Regione(gismodels.Model):
     """Modello spaziale per rappresentare le regioni"""
     codice = gismodels.IntegerField()
     nome = gismodels.CharField(max_length=50)
-    geometry = gismodels.MultiPolygonField(srid=4326) 
+    geometry = gismodels.MultiPolygonField(srid=4326)
     objects = gismodels.GeoManager()
 
     def __unicode__(self):
@@ -58,7 +58,7 @@ class Provincia(gismodels.Model):
     """Modello spaziale per rappresentare le regioni"""
     codice = gismodels.IntegerField()
     nome = gismodels.CharField(max_length=50)
-    geometry = gismodels.MultiPolygonField(srid=4326) 
+    geometry = gismodels.MultiPolygonField(srid=4326)
     objects = gismodels.GeoManager()
 
     def __unicode__(self):
