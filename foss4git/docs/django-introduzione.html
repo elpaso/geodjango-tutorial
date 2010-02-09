@@ -118,6 +118,12 @@
 Un framework per i perfezionisti con delle scadenze</blockquote>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">django</span>
 </pre></div>
+<ul class="incremental simple">
+<li>Introduzione</li>
+<li>MVC/MVT</li>
+<li>Ciao Mondo!</li>
+<li>ORM API</li>
+</ul>
 
 </div>
 <div class="slide" id="cos-e-un-framework">
@@ -204,14 +210,14 @@ con una terminologia leggermente diversa</p>
 </div>
 <div class="slide" id="progetti-e-applicazioni">
 <h1>Progetti e applicazioni</h1>
-<p>Django ci mette a disposizione una serie di
-comandi per compiere le più comuni operazioni
-di gestione e creazione di una applicazione web.</p>
 <p>In gergo Django:</p>
-<ul class="simple">
+<ul class="incremental simple">
 <li>applicazione web: <strong>project</strong></li>
 <li>componente o modulo: <strong>app</strong></li>
 </ul>
+<p class="incremental">Django ci mette a disposizione una serie di
+comandi per compiere le più comuni operazioni
+di gestione e creazione di una applicazione web.</p>
 </div>
 <div class="slide" id="progetto-creazione">
 <h1>Progetto: creazione</h1>
@@ -275,7 +281,9 @@ viste (<em>views</em>) dei diversi componenti (<em>app</em>)</p>
 nei file convenzionalmente chiamati <strong>urls.py</strong></p>
 <div class="highlight"><pre><span class="nv">$ </span>cat urls.py
 </pre></div>
-<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls.defaults</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^(?P&lt;nome&gt;\w+)$&#39;</span><span class="p">,</span> <span class="s">&#39;ciaomondo.views.default&#39;</span><span class="p">),</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="s">&#39;ciaomondo.views.default&#39;</span><span class="p">),</span>
 <span class="p">)</span>
@@ -284,6 +292,12 @@ nei file convenzionalmente chiamati <strong>urls.py</strong></p>
 </div>
 <div class="slide" id="le-rotte-dei-componenti">
 <h1>Le rotte dei componenti</h1>
+<div class="sidebar">
+<p class="first sidebar-title">I riferimenti alle viste</p>
+<p class="last">All'interno della funzione <em>url</em> le viste
+possono essere specificate sia come stringhe
+sia come <em>callable</em></p>
+</div>
 <p>Le rotte del progetto generalmente delegano ai file <strong>urls.py</strong>
 dei componenti</p>
 <div class="highlight"><pre><span class="nv">$ </span>cat urls.py
@@ -293,6 +307,15 @@ dei componenti</p>
 <span class="p">)</span>
 </pre></div>
 <p>La rotta include il file <strong>urls.py</strong> del componente</p>
+<div class="highlight"><pre><span class="nv">$ </span>cat ciaomondo/urls.py
+</pre></div>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls.defaults</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^.*$&#39;</span><span class="p">,</span> <span class="s">&#39;ciaomondo.views.default&#39;</span><span class="p">),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="s">&#39;ciaomondo.views.default&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
 </div>
 <div class="slide" id="le-viste">
 <h1>Le viste</h1>
@@ -357,6 +380,24 @@ I tags predefiniti consentono di eseguire istruzioni condizionali e cicli.
 {% endfor %}
 <span class="nt">&lt;/ul&gt;</span>
 </pre></div>
+</div>
+<div class="slide" id="il-debug">
+<h1>Il debug</h1>
+<div class="sidebar">
+<p class="first sidebar-title">Debug e log</p>
+<blockquote>
+<p>È possibile anche utilizzare
+il log standard di python o
+usare il debugger di  <em>ipython</em>
+al posto di <em>pdb</em></p>
+<p>Django in modalità DEBUG
+stampa a video uno stack
+trace degli errori.</p>
+</blockquote>
+<div class="last"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pdb</span>
+<span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div></div>
 </div>
 <div class="slide" id="i-modelli">
 <h1>I modelli</h1>

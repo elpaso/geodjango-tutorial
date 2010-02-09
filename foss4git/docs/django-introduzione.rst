@@ -8,6 +8,13 @@
 
     >>> import django
 
+.. class:: incremental 
+
+* Introduzione
+* MVC/MVT
+* Ciao Mondo!
+* ORM API
+
 Cos'è un framework?
 ===================
 
@@ -85,14 +92,16 @@ con una terminologia leggermente diversa
 
 Progetti e applicazioni
 =======================
-Django ci mette a disposizione una serie di
-comandi per compiere le più comuni operazioni
-di gestione e creazione di una applicazione web.
-
 In gergo Django:
 
-* applicazione web: **project**
-* componente o modulo: **app**
+.. class:: incremental
+
+    * applicazione web: **project**
+    * componente o modulo: **app**
+
+    Django ci mette a disposizione una serie di
+    comandi per compiere le più comuni operazioni
+    di gestione e creazione di una applicazione web.
 
 
 Progetto: creazione
@@ -176,6 +185,8 @@ nei file convenzionalmente chiamati **urls.py**
 
 .. sourcecode:: python
 
+    from django.conf.urls.defaults import *
+    
     urlpatterns = patterns('',
         url(r'^(?P<nome>\w+)$', 'ciaomondo.views.default'),
         url(r'^$', 'ciaomondo.views.default'),
@@ -186,6 +197,12 @@ La rotta collega l'url alla vista di nome *default*.
 
 Le rotte dei componenti
 =======================
+
+.. sidebar :: I riferimenti alle viste
+    
+    All'interno della funzione *url* le viste
+    possono essere specificate sia come stringhe
+    sia come *callable*
 
 Le rotte del progetto generalmente delegano ai file **urls.py**
 dei componenti
@@ -201,6 +218,22 @@ dei componenti
     )
 
 La rotta include il file **urls.py** del componente
+
+
+.. sourcecode:: bash
+
+    $ cat ciaomondo/urls.py 
+
+
+.. sourcecode:: python
+
+    from django.conf.urls.defaults import *
+
+    urlpatterns = patterns('',
+        url(r'^.*$', 'ciaomondo.views.default'),
+        url(r'^$', 'ciaomondo.views.default'),
+    )
+
 
 Le viste
 ========
@@ -273,6 +306,27 @@ Template: tags
         <li>Nessun animale in elenco.</li>
     {% endfor %}
     </ul>
+
+
+Il debug
+========
+
+.. sidebar :: Debug e log
+    
+    È possibile anche utilizzare
+    il log standard di python o
+    usare il debugger di  *ipython*
+    al posto di *pdb*
+
+    Django in modalità DEBUG
+    stampa a video uno stack
+    trace degli errori.
+
+ .. sourcecode:: python
+
+    import pdb
+    pdb.set_trace()
+   
 
 I modelli
 =========

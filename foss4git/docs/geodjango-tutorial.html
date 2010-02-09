@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.6: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>Utilizzo di GeoDjango</title>
+<style type="text/css">
+
+.highlight .hll { background-color: #333333 }
+.highlight  { background: #111111; color: #ffffff }
+.highlight .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
+.highlight .err { color: #ffffff } /* Error */
+.highlight .g { color: #ffffff } /* Generic */
+.highlight .k { color: #fb660a; font-weight: bold } /* Keyword */
+.highlight .l { color: #ffffff } /* Literal */
+.highlight .n { color: #ffffff } /* Name */
+.highlight .o { color: #ffffff } /* Operator */
+.highlight .x { color: #ffffff } /* Other */
+.highlight .p { color: #ffffff } /* Punctuation */
+.highlight .cm { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Multiline */
+.highlight .cp { color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f } /* Comment.Preproc */
+.highlight .c1 { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Single */
+.highlight .cs { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Special */
+.highlight .gd { color: #ffffff } /* Generic.Deleted */
+.highlight .ge { color: #ffffff } /* Generic.Emph */
+.highlight .gr { color: #ffffff } /* Generic.Error */
+.highlight .gh { color: #ffffff; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #ffffff } /* Generic.Inserted */
+.highlight .go { color: #444444; background-color: #222222 } /* Generic.Output */
+.highlight .gp { color: #ffffff } /* Generic.Prompt */
+.highlight .gs { color: #ffffff } /* Generic.Strong */
+.highlight .gu { color: #ffffff; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #ffffff } /* Generic.Traceback */
+.highlight .kc { color: #fb660a; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #fb660a; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #fb660a; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #fb660a } /* Keyword.Pseudo */
+.highlight .kr { color: #fb660a; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
+.highlight .ld { color: #ffffff } /* Literal.Date */
+.highlight .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #0086d2 } /* Literal.String */
+.highlight .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
+.highlight .nb { color: #ffffff } /* Name.Builtin */
+.highlight .nc { color: #ffffff } /* Name.Class */
+.highlight .no { color: #0086d2 } /* Name.Constant */
+.highlight .nd { color: #ffffff } /* Name.Decorator */
+.highlight .ni { color: #ffffff } /* Name.Entity */
+.highlight .ne { color: #ffffff } /* Name.Exception */
+.highlight .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #ffffff } /* Name.Label */
+.highlight .nn { color: #ffffff } /* Name.Namespace */
+.highlight .nx { color: #ffffff } /* Name.Other */
+.highlight .py { color: #ffffff } /* Name.Property */
+.highlight .nt { color: #fb660a; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #fb660a } /* Name.Variable */
+.highlight .ow { color: #ffffff } /* Operator.Word */
+.highlight .w { color: #888888 } /* Text.Whitespace */
+.highlight .mf { color: #0086f7; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0086f7; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0086f7; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0086f7; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #0086d2 } /* Literal.String.Backtick */
+.highlight .sc { color: #0086d2 } /* Literal.String.Char */
+.highlight .sd { color: #0086d2 } /* Literal.String.Doc */
+.highlight .s2 { color: #0086d2 } /* Literal.String.Double */
+.highlight .se { color: #0086d2 } /* Literal.String.Escape */
+.highlight .sh { color: #0086d2 } /* Literal.String.Heredoc */
+.highlight .si { color: #0086d2 } /* Literal.String.Interpol */
+.highlight .sx { color: #0086d2 } /* Literal.String.Other */
+.highlight .sr { color: #0086d2 } /* Literal.String.Regex */
+.highlight .s1 { color: #0086d2 } /* Literal.String.Single */
+.highlight .ss { color: #0086d2 } /* Literal.String.Symbol */
+.highlight .bp { color: #ffffff } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #fb660a } /* Name.Variable.Class */
+.highlight .vg { color: #fb660a } /* Name.Variable.Global */
+.highlight .vi { color: #fb660a } /* Name.Variable.Instance */
+.highlight .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/django/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/django/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/django/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/django/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/django/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>Utilizzo di GeoDjango</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Utilizzo di GeoDjango</h1>
+
+
+</div>
+<div class="slide" id="importazione-di-geodjango">
+<h1>Importazione di GeoDjango</h1>
+<p>Aggiungere l'applicazione contrib.gis nel file settings.py del progetto:</p>
+<pre class="literal-block">
+...
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.gis',
+    'foss4git.fauna',
+)
+...
+</pre>
+</div>
+<div class="slide" id="aggiunta-del-campo-geometrico-nel-modello">
+<h1>Aggiunta del campo geometrico nel modello</h1>
+<p>Vogliamo aggiungere un campo geometrico puntuale nel modello Avvistamento.
+Per fare questa cosa bisogna far ereditare il modello a django.contrib.gis.db anziche' a django.db.models.
+Una volta' fatto cio' sara' possibile usare il campo geometrico.
+Ricordarsi di abilitare models.GeoManager al posto del manager di default (models.objects) per avere a disposizione tutte le funzionalita' di geodjango sul modello.</p>
+<p>Effettuare le seguenti modifiche su models.py:</p>
+<pre class="literal-block">
+from django.db import models
+from django.contrib.gis.db import models as gismodels
+
+# modelli
+class Animale(models.Model):
+    &quot;&quot;&quot;Modello per rappresentare gli animali&quot;&quot;&quot;
+    nome = models.CharField(max_length=50)
+...
+class Avvistamento(gismodels.Model):
+    &quot;&quot;&quot;Modello spaziale per rappresentare gli avvistamenti&quot;&quot;&quot;
+
+    LIVELLI_INTERESSE = (
+        (1, '*'),
+        (2, '**'),
+        (3, '***'),
+        (4, '****'),
+        (5, '*****'),
+    )
+    data = gismodels.DateTimeField()
+    note = gismodels.TextField()
+    interesse = gismodels.IntegerField(choices=LIVELLI_INTERESSE)
+    animale = gismodels.ForeignKey(Animale)
+    geometry = gismodels.PointField(srid=4326)
+    objects = gismodels.GeoManager()
+...
+</pre>
+<p>Prima di effettuare la sincronizzazione e' necessario cancellare la tabella fauna_avvistamento:</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ psql -U geodjango tutorial
+psql (8.4.2)
+Type &quot;help&quot; for help.
+
+tutorial=&gt; drop table fauna_avvistamento;
+DROP TABLE
+</pre>
+<p>A questo punto sincronizzare il database:</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ ./manage.py syncdb
+Creating table fauna_avvistamento
+Installing index for fauna.Avvistamento model
+</pre>
+</div>
+<div class="slide" id="gestire-dati-geometrici-nell-admin">
+<h1>Gestire dati geometrici nell'admin</h1>
+<p>Dobbiamo abilitare l'applicazione admin a gestire il data entry del dato geometrico. Useremo la funzionalita' di GeoDjango che abilita l'editing dei dati geografici utilizzando OpenLayers su cartografia OpenStreetMap.</p>
+<p>Per far questo modifichiamo il file admin.py:</p>
+<pre class="literal-block">
+from django.contrib import admin
+from django.contrib.gis.admin import GeoModelAdmin
+from models import *
+
+class AvvistamentoAdmin(GeoModelAdmin):
+
+    model = Avvistamento
+
+    list_display = ['data', 'animale', 'interesse']
+    list_filter = ['data', 'animale', 'interesse']
+    date_hierarchy = 'data'
+    fieldsets = (
+      ('Caratteristiche avvistamento', {'fields': (('data', 'animale', 'note', 'interesse'))}),
+      ('Mappa', {'fields': ('geometry',)}),
+    )
+
+    # Openlayers settings
+    scrollable = False
+    map_width = 500
+    map_height = 500
+    #openlayers_url = '/static/openlayers/lib/OpenLayers.js'
+    default_zoom = 6
+    default_lon = 13
+    default_lat = 42
+
+class AnimaleAdmin(admin.ModelAdmin):
+...
+</pre>
+</div>
+<div class="slide" id="importazione-di-shapefile">
+<h1>Importazione di shapefile</h1>
+<p>A questo punto creiamo due geomodelli per la gestione delle regioni e delle province.</p>
+<p>I dati relativi a regioni e province sono nei due shapefile omonimi sotto la directory data/shapefiles e sono georiferiti nel sistema geografico WGS 1984 (srid=4326).</p>
+<p>Possiamo analizzare i due shapefiles con l'utility orginfo presente nel pacchetto GDAL/OGR (usando l'opzione so, summary only):</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ ogrinfo data/shapefile/regioni.shp regioni -so
+INFO: Open of `data/shapefile/regioni.shp'
+      using driver `ESRI Shapefile' successful.
+
+Layer name: regioni
+Geometry: Polygon
+Feature Count: 20
+Extent: (6.627586, 35.493472) - (18.521529, 47.093684)
+Layer SRS WKT:
+GEOGCS[&quot;WGS 84&quot;,
+    DATUM[&quot;WGS_1984&quot;,
+        SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+            AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+        TOWGS84[0,0,0,0,0,0,0],
+        AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+    PRIMEM[&quot;Greenwich&quot;,0,
+        AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+    UNIT[&quot;degree&quot;,0.0174532925199433,
+        AUTHORITY[&quot;EPSG&quot;,&quot;9108&quot;]],
+    AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+gid: Integer (10.0)
+objectid: Integer (10.0)
+regione: String (255.0)
+cod_rip1: Integer (10.0)
+cod_rip2: Integer (10.0)
+cod_reg: Integer (10.0)
+shape_area: Real (24.15)
+shape_len: Real (24.15)
+boundingbo: String (255.0)
+
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ ogrinfo data/shapefile/province.shp province -so
+INFO: Open of `data/shapefile/province.shp'
+  using driver `ESRI Shapefile' successful.
+
+Layer name: province
+Geometry: Polygon
+Feature Count: 107
+Extent: (6.627586, 35.493472) - (18.521529, 47.093684)
+Layer SRS WKT:
+GEOGCS[&quot;WGS 84&quot;,
+    DATUM[&quot;WGS_1984&quot;,
+        SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+            AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+        TOWGS84[0,0,0,0,0,0,0],
+        AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+    PRIMEM[&quot;Greenwich&quot;,0,
+        AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+    UNIT[&quot;degree&quot;,0.0174532925199433,
+        AUTHORITY[&quot;EPSG&quot;,&quot;9108&quot;]],
+    AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+gid: Integer (10.0)
+objectid: Integer (10.0)
+cod_prov: Integer (10.0)
+cod_ipi: Integer (10.0)
+provincia: String (255.0)
+sigla: String (255.0)
+cod_reg: Integer (10.0)
+shape_area: Real (24.15)
+shape_len: Real (24.15)
+boundingbo: String (255.0)
+</pre>
+<p>In entrambi i casi importeremo i campi relativi a nome, codice (regione e cod_reg per regioni, provincia e cod_prov per province) e geometria.</p>
+<p>Come prima cosa aggiungiamo i due geomodelli che gestiscono le entita' Regione e Provincia:</p>
+<pre class="literal-block">
+class Regione(gismodels.Model):
+    &quot;&quot;&quot;Modello spaziale per rappresentare le regioni&quot;&quot;&quot;
+    codice = gismodels.IntegerField()
+    nome = gismodels.CharField(max_length=50)
+    geometry = gismodels.MultiPolygonField(srid=4326)
+    objects = gismodels.GeoManager()
+
+    def __unicode__(self):
+        return '%s' % (self.nome)
+
+class Provincia(gismodels.Model):
+    &quot;&quot;&quot;Modello spaziale per rappresentare le regioni&quot;&quot;&quot;
+    codice = gismodels.IntegerField()
+    nome = gismodels.CharField(max_length=50)
+    geometry = gismodels.MultiPolygonField(srid=4326)
+    objects = gismodels.GeoManager()
+
+    def __unicode__(self):
+        return '%s' % (self.nome)
+</pre>
+<p>Prima di effettuare la sincronizzazione del database, verifichiamo gli oggetti che verranno creati nel database:</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ ./manage.py sql fauna
+BEGIN;
+CREATE TABLE &quot;fauna_animale&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;nome&quot; varchar(50) NOT NULL,
+    &quot;foto&quot; varchar(100) NOT NULL
+)
+;
+CREATE TABLE &quot;fauna_avvistamento&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;data&quot; timestamp with time zone NOT NULL,
+    &quot;note&quot; text NOT NULL,
+    &quot;interesse&quot; integer NOT NULL,
+    &quot;animale_id&quot; integer NOT NULL REFERENCES &quot;fauna_animale&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED
+)
+;
+CREATE TABLE &quot;fauna_regione&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;codice&quot; integer NOT NULL,
+    &quot;nome&quot; varchar(50) NOT NULL
+)
+;
+CREATE TABLE &quot;fauna_provincia&quot; (
+    &quot;id&quot; serial NOT NULL PRIMARY KEY,
+    &quot;codice&quot; integer NOT NULL,
+    &quot;nome&quot; varchar(50) NOT NULL
+)
+;
+COMMIT;
+</pre>
+<p>A questo punto sincronizziamo il database:</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ ./manage.py syncdb
+Creating table fauna_regione
+Creating table fauna_provincia
+Installing index for fauna.Regione model
+Installing index for fauna.Provincia model
+</pre>
+<p>Creiamo uno script carica_dati.py per importare i due shapefile nel database spaziale usando l'utility di GeoDjango LayerMapping:</p>
+<pre class="literal-block">
+&quot;&quot;&quot;Utility per inserire regioni e province sul database dagli shapefile allegati&quot;&quot;&quot;
+
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+from django.contrib.gis.utils import mapping, LayerMapping
+from fauna.models import Regione, Provincia
+
+print 'carico regioni...'
+
+regioni_mapping = {
+    'codice' : 'cod_reg',
+    'nome' : 'regione',
+    'geometry' : 'MULTIPOLYGON',
+}
+
+regioni_shp = 'data/shapefile/regioni.shp'
+regioni =  LayerMapping(Regione, regioni_shp, regioni_mapping, transform=False, encoding='iso-8859-1')
+regioni.save(verbose=True, progress=True)
+
+print 'carico province...'
+
+province_mapping = {
+    'codice' : 'cod_prov',
+    'nome' : 'provincia',
+    'geometry' : 'MULTIPOLYGON',
+}
+
+province_shp = 'data/shapefile/province.shp'
+province =  LayerMapping(Provincia, province_shp, province_mapping, transform=False, encoding='iso-8859-1')
+province.save(verbose=True, progress=True)
+</pre>
+<p>Lanciamo lo script per effettuare il caricamento:</p>
+<pre class="literal-block">
+(django-1.2-alpha-1-env)geodjango&#64;geodjango-laptop:~/tutorial/django-1.2-alpha-1-env/foss4git$ python carica_dati.py
+carico regioni...
+Saved: PIEMONTE
+Saved: VALLE D'AOSTA
+...
+Saved: LOMBARDIA
+Saved: LAZIO
+carico province...
+Saved: TORINO
+Saved: VERCELLI
+...
+Saved: MEDIO CAMPIDANO
+Saved: CARBONIA-IGLESIAS
+</pre>
+</div>
+<div class="slide" id="creazione-di-template-con-openlayer-e-geodjango">
+<h1>Creazione di template con OpenLayer e GeoDjango</h1>
+<p>Creeremo due template che mostrano l'utilizzo di OpenLayers e GeoDjango:</p>
+<pre class="literal-block">
+* un template denominato italia.html, generato dalla view italia che visualizza tutti i punti di avvistamento sul territorio nazionale
+* un template denominato regione.html, generato dalla view regione che visualizza tutti i punti di avvistamento sul territorio regionale e ne fornisce l'elenco
+</pre>
+<p>Se avanza tempo provare a creare un template che visualizzi i punti per provincia ed una vista che visualizzi i punti per tipologia di animale avvistato.</p>
+<p>Inoltre creeremo una view denominata all_kml che alimenta il template di geodjango gis/kml/placemarks.kml. Tale view fornisce un elenco completo in formato kml delle geometrie inserite nel sistema che servira' ad alimentare il layer vettoriale di OpenLayers per la visualizzazione degli avvistamenti sulla mappa.</p>
+<p>Come prima cosa dichiariamo queste tre view sul file urls.py:</p>
+<pre class="literal-block">
+(r'^admin/', include(admin.site.urls)),
+# indirizzi non soggetti ad autenticazione
+(r'^avvistamenti/', avvistamenti),
+(r'^kml/', all_kml),
+(r'^$', italia),
+(r'^regione/(?P&lt;id&gt;[0-9]*)/', regione),
+# TODO (esercizio aggiuntivo, zoom su provincia): (r'^provincia/(?P&lt;id&gt;[0-9]*)/', provincia),
+# TODO (esercizio aggiuntivo, filtrato su animale): (r'^animale/(?P&lt;id&gt;[0-9]*)/', animale),
+# static files
+(r'^static/(?P&lt;path&gt;.*)$', 'django.views.static.serve', {'document_root': STATIC_FILES, 'show_indexes': True}),
+</pre>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">geodjango-tutorial.rst</tt>, line 317)</p>
+Literal block ends without a blank line; unexpected unindent.</div>
+<p>)</p>
+<p>A questo punto creiamo le tre view necessarie sul file views.py:</p>
+<pre class="literal-block">
+from django.shortcuts import render_to_response, get_object_or_404
+from django.contrib.gis.shortcuts import render_to_kml
+from fauna.models import *
+
+def avvistamenti(request):
+    ...
+
+def all_kml(request):
+    &quot;&quot;&quot;vista per generare il kml di tutti i punti di avvistamento&quot;&quot;&quot;
+    avvistamenti  = Avvistamento.objects.kml()
+    return render_to_kml(&quot;gis/kml/placemarks.kml&quot;, {'places' : avvistamenti})
+
+def italia(request):
+    &quot;&quot;&quot;vista con zoom su italia e il numero dei punti di avvistamento inseriti nel sistema&quot;&quot;&quot;
+    num_avvistamenti = Avvistamento.objects.all().count()
+    return render_to_response('italia.html', {'num_avvistamenti' : num_avvistamenti})
+
+def regione(request, id):
+    &quot;&quot;&quot;vista con zoom su regione e l'elenco dei punti di avvistamento inseriti nel sistema per la regione in questione&quot;&quot;&quot;
+    regione = get_object_or_404(Regione, codice=id)
+    avvistamenti = Avvistamento.objects.filter(geometry__intersects=regione.geometry)
+    return render_to_response(&quot;regione.html&quot;, { 'regione': regione, 'avvistamenti': avvistamenti })
+</pre>
+<p>Infine creiamo i due template necessari: italia.html e regione.html.</p>
+<p>Notare che, nel caso non ci fosse una connessione internet, abbiamo creato un WMS con mapserver da utilizzare come base layer al posto del basic layer del WMS di Metacarta.</p>
+<p>italia.html:</p>
+<pre class="literal-block">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;/static/openlayers/lib/OpenLayers.js&quot;&gt;&lt;/script&gt;
+    &lt;style type=&quot;text/css&quot;&gt; #map { width:500px; height: 500px; } &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var map, base_layer, kml;
+        var ms_url = &quot;http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/foss4git/mapserver/italia.map&amp;&quot;
+        function init(){
+            map = new OpenLayers.Map('map');
+            base_layer = new OpenLayers.Layer.WMS( &quot;OpenLayers WMS&quot;,
+               &quot;http://labs.metacarta.com/wms/vmap0&quot;, {layers: 'basic'} );
+            var regioni = new OpenLayers.Layer.WMS(&quot;Regioni&quot;,
+               ms_url, {layers : 'regioni'} );
+            var province = new OpenLayers.Layer.WMS(&quot;Province&quot;,
+               ms_url, {layers : 'province'} );
+
+            kml = new OpenLayers.Layer.GML(&quot;KML&quot;, &quot;/kml&quot;,
+               { format: OpenLayers.Format.KML });
+            map.addLayers([base_layer, regioni, province, kml]);
+
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+            map.setCenter(new OpenLayers.LonLat(13,42),6);
+            }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload=&quot;init()&quot;&gt;
+    &lt;h3&gt;Avvistamenti in Italia&lt;/h3&gt;
+    &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+    &lt;p&gt;Sono stati inseriti {{num_avvistamenti}} avvistamenti.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>regione.html:</p>
+<pre class="literal-block">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&quot;http://openlayers.org/api/OpenLayers.js&quot;&gt;&lt;/script&gt;
+    &lt;style type=&quot;text/css&quot;&gt; #map { width:400px; height: 400px; } &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var map, base_layer, kml;
+        var ms_url = &quot;http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/foss4git/mapserver/italia.map&amp;&quot;
+        function init(){
+            map = new OpenLayers.Map('map');
+            base_layer = new OpenLayers.Layer.WMS( &quot;OpenLayers WMS&quot;,
+               &quot;http://labs.metacarta.com/wms/vmap0&quot;, {layers: 'basic'} );
+            var regioni = new OpenLayers.Layer.WMS(&quot;Regioni&quot;,
+               ms_url, {layers : 'regioni'} );
+            var province = new OpenLayers.Layer.WMS(&quot;Province&quot;,
+               ms_url, {layers : 'province'} );
+
+            var format = new OpenLayers.Format.GeoJSON()
+            regione = format.read({{ regione.geometry.geojson|safe}})[0];
+            // We mark it 'safe' so that Django doesn't escape the quotes.
+
+            regione.attributes = { 'nome': &quot;{{regione.nome}}&quot;, 'type': 'regione'};
+            vectors = new OpenLayers.Layer.Vector(&quot;Data&quot;);
+            vectors.addFeatures(regione);
+            for (var i = 0; i &lt; points.length; i++) {
+                point = format.read(points[i])[0];
+                point.attributes = {'type':'point'};
+                vectors.addFeatures(point);
+            }
+            map.addLayers([base_layer, regioni, province, vectors]);
+
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+            map.zoomToExtent(regione.geometry.getBounds());
+}
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload=&quot;init()&quot;&gt;
+    &lt;h3&gt;Avvistamenti nella regione: {{ regione.nome}}&lt;/h3&gt;
+    &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+    In questa regione ci sono stati {{avvistamenti.count}} avvistamenti.&lt;br&gt;
+    &lt;script&gt; var points = []; &lt;/script&gt;
+    &lt;ul&gt;
+    {% for avvistamento in avvistamenti %}
+        &lt;li&gt;{{ avvistamento.data }}, {{ avvistamento.animale.nome }}&lt;/li&gt;
+        &lt;script&gt;points.push({{avvistamento.geometry.geojson|safe}});&lt;/script&gt;
+    {% endfor %}
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>A questo punto eventualmente rilanciare il server di django e verificare che le viste in questione presentino i risultati previsti.</p>
+</div>
+</div>
+</body>
+</html>

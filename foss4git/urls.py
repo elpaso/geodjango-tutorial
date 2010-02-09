@@ -16,13 +16,10 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    
+    (r'^ciaomondo/', include('ciaomondo.urls')),
+    
     # indirizzi non soggetti ad autenticazione
-    (r'^avvistamenti/', avvistamenti),
-    (r'^kml/', all_kml),
-    (r'^$', italia),
-    (r'^regione/(?P<id>[0-9]*)/', regione),
-    # TODO (esercizio aggiuntivo, zoom su provincia): (r'^provincia/(?P<id>[0-9]*)/', provincia),
-    # TODO (esercizio aggiuntivo, filtrato su animale): (r'^animale/(?P<id>[0-9]*)/', animale),
     # static files
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_FILES, 'show_indexes': True}),
 )

@@ -3,7 +3,6 @@ from django.db import models
 class Animale(models.Model):
     """Modello per rappresentare gli animali"""
     nome = models.CharField(max_length=50, unique = True)
-    foto = models.ImageField(upload_to='animali.foto',blank=True, null=True)
 
     def __unicode__(self):
         return '%s' % (self.nome)
