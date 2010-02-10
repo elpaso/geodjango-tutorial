@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.6: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.7: http://docutils.sourceforge.net/" />
 <meta name="version" content="S5 1.1" />
 <title>Django: Web Application Framework</title>
 <style type="text/css">
@@ -477,7 +477,7 @@ Un modello per rappresentare avvistamenti di animali.</blockquote>
 
 <span class="k">class</span> <span class="nc">Animale</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Modello per rappresentare gli animali&quot;&quot;&quot;</span>
-    <span class="n">nome</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">nome</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">)</span>
@@ -576,17 +576,17 @@ una granularità elevata, è anche possibile cercare nei
 valori di tabelle collegate.</p>
 <p>Le interrogazioni possono anche essere eseguite sulle istanze.</p>
 </blockquote>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span> <span class="n">animale</span><span class="o">=</span><span class="n">Animale</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mi">2010</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">27</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span> <span class="n">animale</span><span class="o">=</span><span class="n">Animale</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">))</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mf">2010</span><span class="o">-</span><span class="mf">02</span><span class="o">-</span><span class="mf">27</span> <span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">avv</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span> <span class="n">animale__nome</span><span class="o">=</span><span class="s">&#39;Orso&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">avv</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="mi">6</span>
+<span class="mf">6</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">avv</span>
-<span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mi">2010</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">27</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mf">2010</span><span class="o">-</span><span class="mf">02</span><span class="o">-</span><span class="mf">27</span> <span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">orso</span><span class="o">=</span><span class="n">Animale</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;Orso&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">orso</span><span class="o">.</span><span class="n">avvistamento_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mi">2010</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">27</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Avvistamento</span><span class="p">:</span> <span class="n">Orso</span> <span class="o">-</span> <span class="mf">2010</span><span class="o">-</span><span class="mf">02</span><span class="o">-</span><span class="mf">27</span> <span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="p">:</span><span class="mf">00</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="slide" id="id2">

@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>Introduzione a GeoDjango</title>
+<style type="text/css">
+
+.highlight  { background: #111111; color: #ffffff }
+.highlight .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
+.highlight .err { color: #ffffff } /* Error */
+.highlight .g { color: #ffffff } /* Generic */
+.highlight .k { color: #fb660a; font-weight: bold } /* Keyword */
+.highlight .l { color: #ffffff } /* Literal */
+.highlight .n { color: #ffffff } /* Name */
+.highlight .o { color: #ffffff } /* Operator */
+.highlight .x { color: #ffffff } /* Other */
+.highlight .p { color: #ffffff } /* Punctuation */
+.highlight .cm { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Multiline */
+.highlight .cp { color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f } /* Comment.Preproc */
+.highlight .c1 { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Single */
+.highlight .cs { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Special */
+.highlight .gd { color: #ffffff } /* Generic.Deleted */
+.highlight .ge { color: #ffffff } /* Generic.Emph */
+.highlight .gr { color: #ffffff } /* Generic.Error */
+.highlight .gh { color: #ffffff; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #ffffff } /* Generic.Inserted */
+.highlight .go { color: #444444; background-color: #222222 } /* Generic.Output */
+.highlight .gp { color: #ffffff } /* Generic.Prompt */
+.highlight .gs { color: #ffffff } /* Generic.Strong */
+.highlight .gu { color: #ffffff; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #ffffff } /* Generic.Traceback */
+.highlight .kc { color: #fb660a; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #fb660a; font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { color: #fb660a } /* Keyword.Pseudo */
+.highlight .kr { color: #fb660a; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
+.highlight .ld { color: #ffffff } /* Literal.Date */
+.highlight .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #0086d2 } /* Literal.String */
+.highlight .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
+.highlight .nb { color: #ffffff } /* Name.Builtin */
+.highlight .nc { color: #ffffff } /* Name.Class */
+.highlight .no { color: #0086d2 } /* Name.Constant */
+.highlight .nd { color: #ffffff } /* Name.Decorator */
+.highlight .ni { color: #ffffff } /* Name.Entity */
+.highlight .ne { color: #ffffff } /* Name.Exception */
+.highlight .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #ffffff } /* Name.Label */
+.highlight .nn { color: #ffffff } /* Name.Namespace */
+.highlight .nx { color: #ffffff } /* Name.Other */
+.highlight .py { color: #ffffff } /* Name.Property */
+.highlight .nt { color: #fb660a; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #fb660a } /* Name.Variable */
+.highlight .ow { color: #ffffff } /* Operator.Word */
+.highlight .w { color: #888888 } /* Text.Whitespace */
+.highlight .mf { color: #0086f7; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0086f7; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0086f7; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0086f7; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #0086d2 } /* Literal.String.Backtick */
+.highlight .sc { color: #0086d2 } /* Literal.String.Char */
+.highlight .sd { color: #0086d2 } /* Literal.String.Doc */
+.highlight .s2 { color: #0086d2 } /* Literal.String.Double */
+.highlight .se { color: #0086d2 } /* Literal.String.Escape */
+.highlight .sh { color: #0086d2 } /* Literal.String.Heredoc */
+.highlight .si { color: #0086d2 } /* Literal.String.Interpol */
+.highlight .sx { color: #0086d2 } /* Literal.String.Other */
+.highlight .sr { color: #0086d2 } /* Literal.String.Regex */
+.highlight .s1 { color: #0086d2 } /* Literal.String.Single */
+.highlight .ss { color: #0086d2 } /* Literal.String.Symbol */
+.highlight .bp { color: #ffffff } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #fb660a } /* Name.Variable.Class */
+.highlight .vg { color: #fb660a } /* Name.Variable.Global */
+.highlight .vi { color: #fb660a } /* Name.Variable.Instance */
+.highlight .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/django/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/django/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/django/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/django/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/django/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>Introduzione a GeoDjango</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Introduzione a GeoDjango</h1>
+
+<ul class="simple">
+<li><strong>Django</strong>: The Web framework for perfectionists with deadlines</li>
+<li><strong>GeoDjango</strong>: The Geographic Web Framework for perfectionists with deadlines</li>
+<li>dalla versione 1.0 di Django fa parte dei <strong>core packages</strong> disponibili di base</li>
+<li>è un insieme di API, utility e tool che consente di creare GIS application con Django</li>
+<li>come Django puo' essere utilizzato sia in ambito <strong>web</strong> che in ambito <strong>desktop</strong></li>
+</ul>
+
+</div>
+<div class="slide" id="indice">
+<h1>Indice</h1>
+<ul>
+<li><p class="first">Architettura GeoDjango</p>
+</li>
+<li><dl class="first docutils">
+<dt>Panoramica delle funzionalità disponibili con GeoDjango</dt>
+<dd><ul class="first last simple">
+<li>GeoDjango Model API</li>
+<li>GEOS API</li>
+<li>GDAL/OGR API</li>
+<li>Measurement Units API</li>
+<li>GeoModelAdmin</li>
+<li>Utilities (LayerMapping, OgrInspect)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Tutorial!</p>
+</li>
+</ul>
+</div>
+<div class="slide" id="architettura-geodjango">
+<h1>Architettura GeoDjango</h1>
+<ul>
+<li><dl class="first docutils">
+<dt>Spatial Database</dt>
+<dd><ul class="first last simple">
+<li>PostGis</li>
+<li>Spatialite</li>
+<li>MySql Spatial</li>
+<li>Oracle Spatial</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>GIS Libraries</dt>
+<dd><ul class="first last simple">
+<li>GEOS (Geometry Engine Open Source)</li>
+<li>GDAL/OGR (Geospatial Data Abstraction Library)</li>
+<li>PROJ.4 (Cartographic Projections Library)</li>
+<li>GeoIP</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="slide" id="panoramica-delle-funzionalita-disponibili-con-geodjango">
+<h1>Panoramica delle funzionalita' disponibili con GeoDjango</h1>
+<ul class="simple">
+<li><ol class="first arabic">
+<li>GeoDjango Model API (Geometry Field, GeoManager, geo-CRUD)</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>GEOS API (operatori spaziali secondo OGC Simple Feature)</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="3">
+<li>GDAL OGR API (accesso a dati esterni)</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="4">
+<li>Measurement Units API</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="5">
+<li>GeoModelAdmin</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="6">
+<li>Alcune utilities: LayerMapping, OgrInspect</li>
+</ol>
+</li>
+<li>ed altro ancora (GeoIP API, Geographic Feeds, ...)</li>
+</ul>
+</div>
+<div class="slide" id="geodjango-model-api-geometry-field-e-geomanager">
+<h1>1.1 GeoDjango Model API (Geometry Field e GeoManager)</h1>
+<blockquote>
+Geometry Field (django.contrib.gis.db estende django.db)</blockquote>
+<ul>
+<li><p class="first">PointField, LineStringField, PolygonField</p>
+</li>
+<li><p class="first">MultiPointField, MultiLineStringField, MultiPolygonField</p>
+</li>
+<li><p class="first">GeometryCollectionField</p>
+</li>
+<li><p class="first">GeometryField &lt;novità 1.2&gt;</p>
+<blockquote>
+<p>Opzioni Geometry Field</p>
+</blockquote>
+</li>
+<li><p class="first"><strong>srid</strong> (default 4326, ovvero WGS84 dd)</p>
+</li>
+<li><p class="first"><strong>dim</strong> (default 2, con 3 supporto z) &lt;novità 1.2&gt;</p>
+</li>
+<li><p class="first"><strong>spatial_index</strong> (default True, crea l'indice spaziale)</p>
+</li>
+</ul>
+</div>
+<div class="slide" id="id1">
+<h1>1.2 GeoDjango Model API (Geometry Field e GeoManager)</h1>
+<blockquote>
+Nel modello ho a disposizione Geographic Field e GeoManager</blockquote>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.contrib.gis.db</span> <span class="k">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Provincia</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modello spaziale per rappresentare le regioni&quot;&quot;&quot;</span>
+    <span class="n">codice</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">nome</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">MultiPolygonField</span><span class="p">(</span><span class="n">srid</span><span class="o">=</span><span class="mf">4326</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">GeoManager</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="slide" id="id2">
+<h1>1.3 GeoDjango Model API (Geometry Field e GeoManager)</h1>
+<div class="highlight"><pre><span class="nv">$ </span>./manage.py sqlall fauna
+</pre></div>
+<div class="highlight"><pre><span class="k">BEGIN</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">&quot;fauna_regione&quot;</span> <span class="p">(</span>
+    <span class="ss">&quot;id&quot;</span> <span class="nb">serial</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="ss">&quot;codice&quot;</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="ss">&quot;nome&quot;</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">)</span>
+<span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">AddGeometryColumn</span><span class="p">(</span><span class="s1">&#39;fauna_regione&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="mi">4326</span><span class="p">,</span> <span class="s1">&#39;MULTIPOLYGON&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="ss">&quot;fauna_regione&quot;</span> <span class="k">ALTER</span> <span class="ss">&quot;geometry&quot;</span> <span class="k">SET</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="ss">&quot;fauna_regione_geometry_id&quot;</span>
+    <span class="k">ON</span> <span class="ss">&quot;fauna_regione&quot;</span> <span class="k">USING</span> <span class="n">GIST</span> <span class="p">(</span> <span class="ss">&quot;geometry&quot;</span> <span class="n">GIST_GEOMETRY_OPS</span> <span class="p">);</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="slide" id="metodi-crud-create-update">
+<h1>1.4 Metodi CRUD: Create, Update</h1>
+<blockquote>
+GeoDjango estende l'API di Django abilitandolo spazialmente</blockquote>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_point</span> <span class="o">=</span> <span class="n">SandboxLayer</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;punto 1&#39;</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="s">&#39;POINT(13.8 42.5)&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_point</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">[</span><span class="o">-</span><span class="mf">1</span><span class="p">])</span>
+<span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">:</span> <span class="s">&#39;0.061&#39;</span><span class="p">,</span> <span class="s">&#39;sql&#39;</span><span class="p">:</span> <span class="s">&#39;INSERT INTO &quot;fauna_sandboxlayer&quot; (&quot;nome&quot;, &quot;geometry&quot;)</span>
+<span class="n">VALUES</span> <span class="p">(</span><span class="n">E</span>\<span class="s">&#39;punto 1</span><span class="se">\&#39;</span><span class="s">, ST_GeomFromEWKB(E</span><span class="se">\&#39;\\\\</span><span class="s">001</span><span class="se">\\\\</span><span class="s">...&#39;</span><span class="p">))</span><span class="s">&#39;}</span>
+</pre></div>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">new_point</span> <span class="o">=</span> <span class="n">SandboxLayer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nome__contains</span><span class="o">=</span><span class="s">&#39;pun&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_point</span><span class="o">.</span><span class="n">nome</span> <span class="o">=</span> <span class="s">&#39;punto 2&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">new_point</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">[</span><span class="o">-</span><span class="mf">1</span><span class="p">])</span>
+<span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">:</span> <span class="s">&#39;0.002&#39;</span><span class="p">,</span> <span class="s">&#39;sql&#39;</span><span class="p">:</span> <span class="s">&#39;UPDATE &quot;fauna_sandboxlayer&quot; SET &quot;nome&quot; = E</span><span class="se">\&#39;</span><span class="s">punto 2</span><span class="se">\&#39;</span><span class="s">,</span>
+    <span class="s">&quot;geometry&quot;</span> <span class="o">=</span> <span class="n">ST_GeomFromEWKB</span><span class="p">(</span><span class="n">E</span>\<span class="s">&#39;</span><span class="se">\\\\</span><span class="s">001</span><span class="se">\\\\</span><span class="s">...&#39;</span><span class="p">)</span>
+    <span class="n">WHERE</span> <span class="s">&quot;fauna_sandboxlayer&quot;</span><span class="o">.</span><span class="s">&quot;id&quot;</span> <span class="o">=</span> <span class="mf">1</span> <span class="s">&#39;}</span>
+</pre></div>
+</div>
+<div class="slide" id="metodi-crud-read-delete">
+<h1>1.5 Metodi CRUD: Read, Delete</h1>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">avvistamento</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">regione</span> <span class="o">=</span> <span class="n">Regione</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">geometry__intersects</span><span class="o">=</span><span class="n">avvistamento</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">regione</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">Regione</span><span class="p">:</span> <span class="n">ABRUZZO</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">[</span><span class="o">-</span><span class="mf">1</span><span class="p">])</span>
+<span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">:</span> <span class="s">&#39;0.187&#39;</span><span class="p">,</span> <span class="s">&#39;sql&#39;</span><span class="p">:</span> <span class="s">&#39;SELECT &quot;fauna_regione&quot;.&quot;id&quot;, &quot;fauna_regione&quot;.&quot;codice&quot;,</span>
+    <span class="s">&quot;fauna_regione&quot;</span><span class="o">.</span><span class="s">&quot;nome&quot;</span><span class="p">,</span> <span class="s">&quot;fauna_regione&quot;</span><span class="o">.</span><span class="s">&quot;geometry&quot;</span>
+    <span class="n">FROM</span> <span class="s">&quot;fauna_regione&quot;</span> <span class="n">WHERE</span> <span class="n">ST_Intersects</span><span class="p">(</span><span class="s">&quot;fauna_regione&quot;</span><span class="o">.</span><span class="s">&quot;geometry&quot;</span><span class="p">,</span>
+    <span class="n">ST_GeomFromEWKB</span><span class="p">(</span><span class="n">E</span>\<span class="s">&#39;</span><span class="se">\\\\</span><span class="s">001\...&#39;</span><span class="p">))</span> <span class="n">LIMIT</span> <span class="mf">21</span><span class="s">&#39;}</span>
+</pre></div>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">sandfeat</span> <span class="o">=</span> <span class="n">SandboxLayer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sandfeat</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">[</span><span class="o">-</span><span class="mf">1</span><span class="p">])</span>
+<span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">:</span> <span class="s">&#39;0.002&#39;</span><span class="p">,</span> <span class="s">&#39;sql&#39;</span><span class="p">:</span> <span class="s">&#39;DELETE FROM &quot;fauna_sandboxlayer&quot; WHERE &quot;id&quot; IN (1)&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">SandboxLayer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">queries</span><span class="p">[</span><span class="o">-</span><span class="mf">2</span><span class="p">])</span>
+<span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">:</span> <span class="s">&#39;0.002&#39;</span><span class="p">,</span> <span class="s">&#39;sql&#39;</span><span class="p">:</span> <span class="s">&#39;DELETE FROM &quot;fauna_sandboxlayer&quot; WHERE &quot;id&quot; IN (3, 2)&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="slide" id="geos-api-simple-feature-access">
+<h1>2. GEOS API: Simple Feature Access</h1>
+<blockquote>
+<strong>GEOS</strong> È un' implementazione delle spatial predicate functions e degli spatial operators
+secondo specifiche OGC &quot;Simple Features for SQL&quot;</blockquote>
+<p>L'interfaccia GEOS in GeoDjango offre principalmente due vantaggi</p>
+<blockquote>
+<ul class="simple">
+<li><ol class="first arabic">
+<li>mapping delle geometrie secondo le specifiche OGC Simple Feature Access</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>funzionalità geometriche, topologiche e di geoprocessing</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="slide" id="id3">
+<h1>2.1 GEOS API: Simple Feature Access</h1>
+<blockquote>
+<ol class="arabic simple">
+<li>API per il mapping delle geometrie secondo le specifiche OGC Simple Feature Access</li>
+</ol>
+</blockquote>
+<ul class="simple">
+<li>Point</li>
+<li>LineString, LinearRing</li>
+<li>Polygon</li>
+<li>Geometry Collections (MultiPoint, MultiLineString, MultiPolygon, GeometryCollection)</li>
+</ul>
+</div>
+<div class="slide" id="geos-api-funzionalit-geometriche-e-topologiche">
+<h1>2.2 GEOS API: Funzionalità geometriche e topologiche</h1>
+<blockquote>
+<ol class="arabic simple" start="2">
+<li>Funzionalità geometriche e topologiche</li>
+</ol>
+</blockquote>
+<ul class="simple">
+<li><strong>Proprietà geometriche</strong> (empty, geom_type, hasz, num_coords, simple, valid...)</li>
+<li><strong>Proprietà rappresentative</strong> (ewkt, hex, hexewkb, json, geojson, kml, ogr, wkb, ewkb, wkt)</li>
+<li><strong>Predicati spaziali e topologici</strong> (contains, crosses, equals, intersects, touches, within, ...)</li>
+<li><strong>Metodi di geoprocessing</strong> (buffer, difference, intersection, simplify, union, ...)</li>
+<li><strong>Altre proprietà e metodi</strong> (centroid, envelope, area, distance, length, srs, transform)</li>
+</ul>
+</div>
+<div class="slide" id="geos-api-esempio-1">
+<h1>2.3 GEOS API: Esempio 1</h1>
+<blockquote>
+Mapping delle geometrie (point), proprietà geometriche (hasz, geom_type)
+e proprietà rappresentative</blockquote>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">avvistamento</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span> <span class="o">=</span> <span class="n">avvistamento</span><span class="o">.</span><span class="n">geometry</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span>
+<span class="p">(</span><span class="mf">13.798828125</span><span class="p">,</span> <span class="mf">42.5390625</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">hasz</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">geom_type</span>
+<span class="s">&#39;Point&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">json</span>
+<span class="s">&#39;{ &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ 13.798828, 42.539062 ] }&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">point</span><span class="o">.</span><span class="n">ewkt</span> <span class="c"># extended wkt</span>
+<span class="s">&#39;SRID=4326;POINT (13.7988281250000000 42.5390625000000000)&#39;</span>
+</pre></div>
+</div>
+<div class="slide" id="geos-api-esempio-2">
+<h1>2.4 GEOS API: Esempio 2</h1>
+<blockquote>
+Predicati spaziali, trasformazioni (richiede GDAL), metodi di geoprocessing</blockquote>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">abruzzo</span> <span class="o">=</span> <span class="n">Regione</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;ABRUZZO&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">avvistamento</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">abruzzo</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">avvistamento</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">avvistamento</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">ewkt</span>
+<span class="s">&#39;SRID=4326;POINT (13.7988281250000000 42.5390625000000000)&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">transformed_point</span> <span class="o">=</span> <span class="n">avvistamento</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="mf">3395</span><span class="p">,</span><span class="n">clone</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">transformed_point</span><span class="o">.</span><span class="n">ewkt</span>
+<span class="s">&#39;SRID=3395;POINT (1536078.5204189007636160 5213176.4834084874019027)&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">buffer</span> <span class="o">=</span> <span class="n">SandboxLayer</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="s">&#39;buffer&#39;</span><span class="p">,</span><span class="n">geometry</span><span class="o">=</span><span class="n">transformed_point</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mf">20000</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">buffer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="slide" id="gdal-ogr-api">
+<h1>3. GDAL OGR API</h1>
+<blockquote>
+L'interfaccia di GeoDjango con GDAL (Geospatial Data Abstraction Library),
+mediante la libreria OGR (Simple Feature library) permette di leggere/scrivere numerosi
+formati vettoriali</blockquote>
+<p>Caratteristiche:</p>
+<ul class="simple">
+<li>è <strong>facoltativa</strong> per GeoDjango (obbligatoria per accesso a srs e trasformazioni e per LayerMapping)</li>
+<li>permette, mediante la classe di ingresso <strong>DataSource</strong>, l'accesso a tutti i formati <strong>OGR</strong>, in molti casi in lettura/scrittura</li>
+<li>consente l'accesso alle informazioni sulle <strong>feature</strong> che compongono il DataSource</li>
+<li>nelle funzionalità è simile alla combinazione dell'API di GeoDjango e GEOS viste in precedenza</li>
+<li>è possibile ottenere una <strong>GEOSGeometry</strong> mediante il metodo geos di <strong>OGRGeometry</strong></li>
+<li>oppure si possono usare le proprietà rappresentative (wkt, wkb, json, ...)</li>
+</ul>
+</div>
+<div class="slide" id="gdal-ogr-api-un-esempio">
+<h1>3.1 GDAL OGR API: un esempio</h1>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="nn">django.contrib.gis.gdal</span> <span class="k">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">(</span><span class="s">&#39;data/shapefile/regioni.shp&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">data</span><span class="o">/</span><span class="n">shapefile</span><span class="o">/</span><span class="n">regioni</span><span class="o">.</span><span class="n">shp</span> <span class="p">(</span><span class="n">ESRI</span> <span class="n">Shapefile</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">))</span>
+<span class="mf">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lyr</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span>
+<span class="n">regioni</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">num_feat</span><span class="p">)</span>
+<span class="mf">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">geom_type</span><span class="p">)</span>
+<span class="n">Polygon</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">srs</span><span class="o">.</span><span class="n">srid</span><span class="p">)</span>
+<span class="mf">4326</span>
+</pre></div>
+</div>
+<div class="slide" id="gdal-ogr-api-un-esempio-segue">
+<h1>3.1 GDAL OGR API: un esempio (segue)</h1>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">fields</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;gid&#39;</span><span class="p">,</span> <span class="s">&#39;objectid&#39;</span><span class="p">,</span> <span class="s">&#39;regione&#39;</span><span class="p">,</span> <span class="s">&#39;cod_rip1&#39;</span><span class="p">,</span> <span class="s">&#39;cod_rip2&#39;</span><span class="p">,</span> <span class="s">&#39;cod_reg&#39;</span><span class="p">,</span> <span class="s">&#39;shape_area&#39;</span><span class="p">,</span> <span class="s">&#39;shape_len&#39;</span><span class="p">,</span> <span class="s">&#39;boundingbo&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">lyr</span><span class="p">:</span>
+   <span class="o">....</span><span class="p">:</span>        <span class="k">print</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;regione&#39;</span><span class="p">),</span> <span class="n">feat</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">num_points</span><span class="p">)</span>
+   <span class="o">....</span><span class="p">:</span>
+<span class="n">PIEMONTE</span> <span class="mf">14811</span>
+<span class="n">VALLE</span> <span class="n">D</span><span class="s">&#39;AOSTA 3598</span>
+<span class="o">...</span>
+<span class="n">LOMBARDIA</span> <span class="mf">14909</span>
+<span class="n">LAZIO</span> <span class="mf">19131</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">feat</span> <span class="o">=</span> <span class="n">lyr</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;regione&#39;</span><span class="p">))</span>
+<span class="n">VALLE</span> <span class="n">D</span><span class="s">&#39;AOSTA</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">geom</span> <span class="c"># OGRGeometry, non GEOSGeometry</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">srid</span><span class="p">)</span>
+<span class="mf">4326</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">feat</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">wkt</span><span class="p">[:</span><span class="mf">100</span><span class="p">])</span>
+<span class="n">MULTIPOLYGON</span> <span class="p">(((</span><span class="mf">8.439415832216145</span> <span class="mf">46.465900481500874</span><span class="p">,</span><span class="mf">8.439484266241374</span> <span class="mf">46.465576832714113</span><span class="p">,</span><span class="mf">8.43950386</span>
+</pre></div>
+</div>
+<div class="slide" id="measurement-units-api">
+<h1>4. Measurement Units API</h1>
+<blockquote>
+Un API per gestire in maniera immediata le operazioni e le conversioni tra unità di misura</blockquote>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="nn">django.contrib.gis.measure</span> <span class="k">import</span> <span class="n">Distance</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d1</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">km</span><span class="o">=</span><span class="mf">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="k">print</span> <span class="n">d1</span>
+<span class="mf">5.0</span> <span class="n">km</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="k">print</span> <span class="n">d1</span><span class="o">.</span><span class="n">mi</span>
+<span class="mf">3.10685596119</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="n">d2</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">mi</span><span class="o">=</span><span class="mf">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="k">print</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span>
+<span class="mf">13.04672</span> <span class="n">km</span>
+<span class="o">&gt;&gt;&gt;</span>  <span class="n">a</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">*</span> <span class="n">d2</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="mf">40.2336</span> <span class="n">sq_km</span>
+</pre></div>
+</div>
+<div class="slide" id="geomodeladmin">
+<h1>5. GeoModelAdmin</h1>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+<span class="k">from</span> <span class="nn">django.contrib.gis.admin</span> <span class="k">import</span> <span class="n">GeoModelAdmin</span>
+<span class="k">from</span> <span class="nn">models</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">AvvistamentoAdmin</span><span class="p">(</span><span class="n">GeoModelAdmin</span><span class="p">):</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Avvistamento</span>
+
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">,</span> <span class="s">&#39;interesse&#39;</span><span class="p">]</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">,</span> <span class="s">&#39;interesse&#39;</span><span class="p">]</span>
+    <span class="n">date_hierarchy</span> <span class="o">=</span> <span class="s">&#39;data&#39;</span>
+    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="p">(</span><span class="s">&#39;Caratteristiche avvistamento&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">((</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">,</span> <span class="s">&#39;note&#39;</span><span class="p">,</span> <span class="s">&#39;interesse&#39;</span><span class="p">))}),</span>
+      <span class="p">(</span><span class="s">&#39;Mappa&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;geometry&#39;</span><span class="p">,)}),</span>
+    <span class="p">)</span>
+
+    <span class="c"># Openlayers settings</span>
+    <span class="n">scrollable</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">map_width</span> <span class="o">=</span> <span class="mf">500</span>
+    <span class="n">map_height</span> <span class="o">=</span> <span class="mf">500</span>
+    <span class="n">openlayers_url</span> <span class="o">=</span> <span class="s">&#39;/static/openlayers/lib/OpenLayers.js&#39;</span>
+    <span class="n">default_zoom</span> <span class="o">=</span> <span class="mf">6</span>
+    <span class="n">default_lon</span> <span class="o">=</span> <span class="mf">13</span>
+    <span class="n">default_lat</span> <span class="o">=</span> <span class="mf">42</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Avvistamento</span><span class="p">,</span> <span class="n">AvvistamentoAdmin</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="alcune-utilities">
+<h1>6 Alcune utilities</h1>
+<blockquote>
+GeoDjango mette a disposizione alcune utility</blockquote>
+<ul class="simple">
+<li>LayerMapping per importare dati sullo spatialdb</li>
+<li>OgrInspect per generare il mapping necessario a LayerMapping</li>
+<li>OgrInspect può anche generare un modello a partire da un dato OGR</li>
+</ul>
+</div>
+<div class="slide" id="utility-per-importazione-dati-ogr-layermapping">
+<h1>6.1 Utility per importazione dati OGR: LayerMapping</h1>
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;settings&#39;</span>
+
+<span class="k">from</span> <span class="nn">django.contrib.gis.utils</span> <span class="k">import</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">LayerMapping</span>
+<span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="n">Regione</span><span class="p">,</span> <span class="n">Provincia</span>
+
+<span class="k">print</span> <span class="s">&#39;carico regioni...&#39;</span>
+
+<span class="n">regioni_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;codice&#39;</span> <span class="p">:</span> <span class="s">&#39;cod_reg&#39;</span><span class="p">,</span>
+    <span class="s">&#39;nome&#39;</span> <span class="p">:</span> <span class="s">&#39;regione&#39;</span><span class="p">,</span>
+    <span class="s">&#39;geometry&#39;</span> <span class="p">:</span> <span class="s">&#39;MULTIPOLYGON&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">regioni_shp</span> <span class="o">=</span> <span class="s">&#39;data/shapefile/regioni.shp&#39;</span>
+<span class="n">regioni</span> <span class="o">=</span>  <span class="n">LayerMapping</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Regione</span><span class="p">,</span> <span class="n">data_source</span><span class="o">=</span><span class="n">regioni_shp</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">regioni_mapping</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;iso-8859-1&#39;</span><span class="p">)</span>
+<span class="n">regioni</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="utility-per-importazione-dati-ogrinspect">
+<h1>6.2 Utility per importazione dati: OgrInspect</h1>
+<div class="highlight"><pre><span class="nv">$ </span>./manage.py ogrinspect data/shapefile/regioni.shp Regione --srid<span class="o">=</span>4326 --mapping --multi
+</pre></div>
+<ul class="simple">
+<li>--srid setta il SRID del campo geografico</li>
+<li>--mapping richiede la generazione del mapping dictionary da usare con LayerMapping</li>
+<li>--multi impone il campo come multi geometrico (ad es come MultiPolygonField invece di PolygonField)</li>
+</ul>
+</div>
+<div class="slide" id="output-di-ogrinspect">
+<h1>6.3 Output di OgrInspect</h1>
+<blockquote>
+OgrInspect genera il codice necessario per il modello e per il mapping</blockquote>
+<div class="highlight"><pre><span class="c"># This is an auto-generated Django model module created by ogrinspect.</span>
+<span class="k">from</span> <span class="nn">django.contrib.gis.db</span> <span class="k">import</span> <span class="n">models</span>
+
+    <span class="k">class</span> <span class="nc">Regione</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+        <span class="n">gid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+        <span class="n">objectid</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+        <span class="n">regione</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">255</span><span class="p">)</span>
+        <span class="o">...</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">MultiPolygonField</span><span class="p">(</span><span class="n">srid</span><span class="o">=</span><span class="mf">4326</span><span class="p">)</span>
+        <span class="n">objects</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">GeoManager</span><span class="p">()</span>
+
+    <span class="c"># Auto-generated `LayerMapping` dictionary for Regione model</span>
+    <span class="n">regione_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;gid&#39;</span> <span class="p">:</span> <span class="s">&#39;gid&#39;</span><span class="p">,</span>
+        <span class="s">&#39;objectid&#39;</span> <span class="p">:</span> <span class="s">&#39;objectid&#39;</span><span class="p">,</span>
+        <span class="s">&#39;regione&#39;</span> <span class="p">:</span> <span class="s">&#39;regione&#39;</span><span class="p">,</span>
+        <span class="o">...</span>
+        <span class="s">&#39;geom&#39;</span> <span class="p">:</span> <span class="s">&#39;MULTIPOLYGON&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="slide" id="tutorial">
+<h1>Tutorial</h1>
+<p>A partire dall'applicazione creata in precedenza:</p>
+<ul class="simple">
+<li><ol class="first arabic">
+<li>attivazione di GeoDjango</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>aggiunta del campo geografico e del GeoManager nel modello</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="3">
+<li>GeoModelAdmin: gestione di dati geografici con l'admin</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="4">
+<li>importazione di dati da altri formati con LayerMapping</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="5">
+<li>l'utility ogrinspect</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="6">
+<li>creazione di una vista che espone il kml delle geometrie</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="7">
+<li>creazione di una mappa dell'italia e caricamento del kml con OpenLayers</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="8">
+<li>creazione di una vista regionale e caricamento dei dati appartenenti a una regione</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="9">
+<li>creazione di un modello sandbox per testare le API di GeoDjango</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="10">
+<li>uso dell'API: metodi CRUD</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="11">
+<li>uso dell'API GEOS</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="12">
+<li>uso dell'API GDAL/OGR</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="13">
+<li>uso dell'API Measurement Units</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="slide" id="attivazione-di-geodjango">
+<h1>1. Attivazione di GeoDjango</h1>
+<blockquote>
+GeoDjango è un'applicazione Django</blockquote>
+<p>(settings.py)</p>
+<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.gis&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="aggiunta-del-campo-geografico-e-del-geomanager-nel-modello">
+<h1>2.1 Aggiunta del campo geografico e del GeoManager nel modello</h1>
+<p>Eliminare la tabella fauna_avvistamento (va rigenerata con il nuovo campo)</p>
+<p>Inserire il campo geografico e il GeoManager nel modello</p>
+<p>(fauna/models.py)</p>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="k">from</span> <span class="nn">django.contrib.gis.db</span> <span class="k">import</span> <span class="n">models</span> <span class="k">as</span> <span class="n">gismodels</span>
+
+<span class="k">class</span> <span class="nc">Avvistamento</span><span class="p">(</span><span class="n">gismodels</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modello spaziale per rappresentare gli avvistamenti&quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">animale</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Animale</span><span class="p">)</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">PointField</span><span class="p">(</span><span class="n">srid</span><span class="o">=</span><span class="mf">4326</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">GeoManager</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="slide" id="id4">
+<h1>2.2 Aggiunta del campo geografico e del GeoManager nel modello</h1>
+<blockquote>
+Verifichiamo l'output e sincronizziamo</blockquote>
+<div class="highlight"><pre><span class="nv">$ </span>./manage.py sqlall fauna
+
+BEGIN;
+...
+CREATE TABLE <span class="s2">&quot;fauna_avvistamento&quot;</span> <span class="o">(</span>
+    <span class="s2">&quot;id&quot;</span> serial NOT NULL PRIMARY KEY,
+    <span class="s2">&quot;data&quot;</span> timestamp with <span class="nb">time </span>zone NOT NULL,
+    <span class="s2">&quot;note&quot;</span> text,
+    <span class="s2">&quot;animale_id&quot;</span> integer NOT NULL REFERENCES <span class="s2">&quot;fauna_animale&quot;</span> <span class="o">(</span><span class="s2">&quot;id&quot;</span><span class="o">)</span> DEFERRABLE INITIALLY DEFERRED
+<span class="o">)</span>
+;
+CREATE INDEX <span class="s2">&quot;fauna_avvistamento_animale_id&quot;</span> ON <span class="s2">&quot;fauna_avvistamento&quot;</span> <span class="o">(</span><span class="s2">&quot;animale_id&quot;</span><span class="o">)</span>;
+SELECT AddGeometryColumn<span class="o">(</span><span class="s1">&#39;fauna_avvistamento&#39;</span>, <span class="s1">&#39;geometry&#39;</span>, 4326, <span class="s1">&#39;POINT&#39;</span>, 2<span class="o">)</span>;
+ALTER TABLE <span class="s2">&quot;fauna_avvistamento&quot;</span> ALTER <span class="s2">&quot;geometry&quot;</span> SET NOT NULL;
+CREATE INDEX <span class="s2">&quot;fauna_avvistamento_geometry_id&quot;</span> ON <span class="s2">&quot;fauna_avvistamento&quot;</span> USING GIST <span class="o">(</span> <span class="s2">&quot;geometry&quot;</span> GIST_GEOMETRY_OPS <span class="o">)</span>;
+COMMIT;
+
+./manage.py syncdb
+Creating table fauna_avvistamento
+Installing index <span class="k">for </span>fauna.Avvistamento model
+</pre></div>
+</div>
+<div class="slide" id="geomodeladmin-gestione-di-dati-geografici-con-l-admin">
+<h1>3. GeoModelAdmin: gestione di dati geografici con l'admin</h1>
+<p>(fauna/admin.py)</p>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.contrib.gis.admin</span> <span class="k">import</span> <span class="n">GeoModelAdmin</span>
+
+<span class="k">class</span> <span class="nc">AvvistamentoAdmin</span><span class="p">(</span><span class="n">GeoModelAdmin</span><span class="p">):</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Avvistamento</span>
+
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">]</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">]</span>
+    <span class="n">date_hierarchy</span> <span class="o">=</span> <span class="s">&#39;data&#39;</span>
+    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="p">(</span><span class="s">&#39;Caratteristiche avvistamento&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">((</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="s">&#39;animale&#39;</span><span class="p">,</span> <span class="s">&#39;note&#39;</span><span class="p">,))}),</span>
+      <span class="p">(</span><span class="s">&#39;Mappa&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;geometry&#39;</span><span class="p">,)}),</span>
+    <span class="p">)</span>
+    <span class="c"># Openlayers settings</span>
+    <span class="n">scrollable</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">map_width</span> <span class="o">=</span> <span class="mf">500</span>
+    <span class="n">map_height</span> <span class="o">=</span> <span class="mf">500</span>
+    <span class="c">#openlayers_url = &#39;/static/openlayers/lib/OpenLayers.js&#39;</span>
+    <span class="n">default_zoom</span> <span class="o">=</span> <span class="mf">6</span>
+    <span class="n">default_lon</span> <span class="o">=</span> <span class="mf">13</span>
+    <span class="n">default_lat</span> <span class="o">=</span> <span class="mf">42</span>
+</pre></div>
+</div>
+<div class="slide" id="importazione-di-dati-da-altri-formati-con-layermapping">
+<h1>4.1 Importazione di dati da altri formati con LayerMapping</h1>
+<blockquote>
+Analizziamo il dato da importare con ogrinfo (usando l'opzione
+-so = summary only)</blockquote>
+<div class="highlight"><pre><span class="nv">$ </span>ogrinfo -so data/shapefile/regioni.shp
+INFO: Open of <span class="sb">`</span>data/shapefile/regioni.shp<span class="s1">&#39;</span>
+<span class="s1">      using driver `ESRI Shapefile&#39;</span> successful.
+1: regioni <span class="o">(</span>Polygon<span class="o">)</span>
+<span class="nv">$ </span>ogrinfo -so data/shapefile/regioni.shp regioni
+...
+Layer name: regioni
+Geometry: Polygon
+Feature Count: 20
+Extent: <span class="o">(</span>6.627586, 35.493472<span class="o">)</span> - <span class="o">(</span>18.521529, 47.093684<span class="o">)</span>
+Layer SRS WKT:
+GEOGCS<span class="o">[</span><span class="s2">&quot;WGS 84&quot;</span>,...
+gid: Integer <span class="o">(</span>10.0<span class="o">)</span>
+objectid: Integer <span class="o">(</span>10.0<span class="o">)</span>
+regione: String <span class="o">(</span>255.0<span class="o">)</span>
+...
+</pre></div>
+</div>
+<div class="slide" id="id5">
+<h1>4.2 Importazione di dati da altri formati con LayerMapping</h1>
+<blockquote>
+Creiamo il modello con i campi che abbiamo deciso di importare,
+analizziamo gli oggetti che verranno prodotti sul db e sincronizziamo</blockquote>
+<p>(fauna/models.py)</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Regione</span><span class="p">(</span><span class="n">gismodels</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modello spaziale per rappresentare le regioni&quot;&quot;&quot;</span>
+    <span class="n">codice</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">nome</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">MultiPolygonField</span><span class="p">(</span><span class="n">srid</span><span class="o">=</span><span class="mf">4326</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">GeoManager</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="id6">
+<h1>4.3 Importazione di dati da altri formati con LayerMapping</h1>
+<blockquote>
+Creiamo uno script di importazione</blockquote>
+<p>(carica_dati.py)</p>
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;settings&#39;</span>
+
+<span class="k">from</span> <span class="nn">django.contrib.gis.utils</span> <span class="k">import</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">LayerMapping</span>
+<span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="n">Regione</span>
+
+<span class="k">print</span> <span class="s">&#39;carico regioni...&#39;</span>
+
+<span class="n">regioni_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;codice&#39;</span> <span class="p">:</span> <span class="s">&#39;cod_reg&#39;</span><span class="p">,</span>
+    <span class="s">&#39;nome&#39;</span> <span class="p">:</span> <span class="s">&#39;regione&#39;</span><span class="p">,</span>
+    <span class="s">&#39;geometry&#39;</span> <span class="p">:</span> <span class="s">&#39;MULTIPOLYGON&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">regioni_shp</span> <span class="o">=</span> <span class="s">&#39;data/shapefile/regioni.shp&#39;</span>
+<span class="n">regioni</span> <span class="o">=</span>  <span class="n">LayerMapping</span><span class="p">(</span><span class="n">Regione</span><span class="p">,</span> <span class="n">regioni_shp</span><span class="p">,</span> <span class="n">regioni_mapping</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;iso-8859-1&#39;</span><span class="p">)</span>
+<span class="n">regioni</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="l-utility-ogrinspect">
+<h1>5. l'utility ogrinspect</h1>
+<p>questa utility consente di:</p>
+<blockquote>
+<ul class="simple">
+<li>autogenerare il codice per la definizione del modello a partire da un layer ogr</li>
+<li>autogenerare il dizionario necessario per il LayerMapping che abbiamo usato nello script di importazione</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span class="nv">$ </span>./manage.py ogrinspect data/shapefile/regioni.shp Regione --srid<span class="o">=</span>4326 --multi --mapping
+
+<span class="c"># This is an auto-generated Django model module created by ogrinspect.</span>
+from django.contrib.gis.db import models
+
+class Regione<span class="o">(</span>models.Model<span class="o">)</span>:
+    <span class="nv">gid</span> <span class="o">=</span> models.IntegerField<span class="o">()</span>
+    <span class="nv">objectid</span> <span class="o">=</span> models.IntegerField<span class="o">()</span>
+    ...
+    <span class="nv">geom</span> <span class="o">=</span> models.MultiPolygonField<span class="o">(</span><span class="nv">srid</span><span class="o">=</span>4326<span class="o">)</span>
+    <span class="nv">objects</span> <span class="o">=</span> models.GeoManager<span class="o">()</span>
+
+<span class="c"># Auto-generated `LayerMapping` dictionary for Regione model</span>
+<span class="nv">regione_mapping</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="s1">&#39;gid&#39;</span> : <span class="s1">&#39;gid&#39;</span>,
+    <span class="s1">&#39;objectid&#39;</span> : <span class="s1">&#39;objectid&#39;</span>,
+    ...
+    <span class="s1">&#39;geom&#39;</span> : <span class="s1">&#39;MULTIPOLYGON&#39;</span>,
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="slide" id="creazione-di-una-vista-che-espone-il-kml-delle-geometrie">
+<h1>6. creazione di una vista che espone il kml delle geometrie</h1>
+<p>(urls.py)</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="c"># indirizzi non soggetti ad autenticazione</span>
+    <span class="p">(</span><span class="s">r&#39;^avvistamenti/&#39;</span><span class="p">,</span> <span class="n">avvistamenti</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^kml/&#39;</span><span class="p">,</span> <span class="n">all_kml</span><span class="p">),</span>
+    <span class="o">...</span>
+</pre></div>
+<p>(fauna/views.py)</p>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">django.shortcuts</span> <span class="k">import</span> <span class="n">render_to_response</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="k">from</span> <span class="nn">django.contrib.gis.shortcuts</span> <span class="k">import</span> <span class="n">render_to_kml</span>
+<span class="k">from</span> <span class="nn">fauna.models</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">all_kml</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;vista per generare il kml di tutti i punti di avvistamento&quot;&quot;&quot;</span>
+    <span class="n">avvistamenti</span>  <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">kml</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_to_kml</span><span class="p">(</span><span class="s">&quot;gis/kml/placemarks.kml&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;places&#39;</span> <span class="p">:</span> <span class="n">avvistamenti</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="slide" id="creazione-di-una-mappa-dell-italia-e-caricamento-del-kml-con-openlayers">
+<h1>7.1 creazione di una mappa dell'italia e caricamento del kml con OpenLayers</h1>
+<p>(urls.py)</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>
+    <span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="c"># indirizzi non soggetti ad autenticazione</span>
+    <span class="p">(</span><span class="s">r&#39;^avvistamenti/&#39;</span><span class="p">,</span> <span class="n">avvistamenti</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^kml/&#39;</span><span class="p">,</span> <span class="n">all_kml</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">italia</span><span class="p">),</span>
+    <span class="o">...</span>
+</pre></div>
+<p>(fauna/views.py)</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">italia</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;vista con zoom su italia e il numero dei punti di avvistamento inseriti nel sistema&quot;&quot;&quot;</span>
+    <span class="n">num_avvistamenti</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;italia.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;num_avvistamenti&#39;</span> <span class="p">:</span> <span class="n">num_avvistamenti</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="slide" id="id7">
+<h1>7.1 creazione di una mappa dell'italia e caricamento del kml con OpenLayers</h1>
+<p>(fauna/templates/italia.html)</p>
+<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/static/openlayers/lib/OpenLayers.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span> <span class="nf">#map</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span><span class="m">500px</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">500px</span><span class="p">;</span> <span class="p">}</span> <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+        <span class="k">var</span> <span class="nx">map</span><span class="o">,</span> <span class="nx">base_layer</span><span class="o">,</span> <span class="nx">kml</span><span class="o">;</span>
+        <span class="k">var</span> <span class="nx">ms_url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/geodjango-tutorial/foss4git/mapserver/italia.map&amp;&quot;</span>
+        <span class="k">function</span> <span class="nx">init</span><span class="p">(){</span>
+            <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="s1">&#39;map&#39;</span><span class="p">);</span>
+            <span class="nx">base_layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span> <span class="s2">&quot;OpenLayers WMS&quot;</span><span class="o">,</span>
+               <span class="s2">&quot;http://labs.metacarta.com/wms/vmap0&quot;</span><span class="o">,</span> <span class="p">{</span><span class="nx">layers</span><span class="o">:</span> <span class="s1">&#39;basic&#39;</span><span class="p">}</span> <span class="p">);</span>
+            <span class="k">var</span> <span class="nx">regioni</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span><span class="s2">&quot;Regioni&quot;</span><span class="o">,</span>
+               <span class="nx">ms_url</span><span class="o">,</span> <span class="p">{</span><span class="nx">layers</span> <span class="o">:</span> <span class="s1">&#39;regioni&#39;</span><span class="p">}</span> <span class="p">);</span>
+            <span class="nx">kml</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">GML</span><span class="p">(</span><span class="s2">&quot;KML&quot;</span><span class="o">,</span> <span class="s2">&quot;/kml&quot;</span><span class="o">,</span>
+               <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Format</span><span class="p">.</span><span class="nx">KML</span> <span class="p">});</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">addLayers</span><span class="p">([</span><span class="nx">base_layer</span><span class="o">,</span> <span class="nx">regioni</span><span class="o">,</span> <span class="nx">kml</span><span class="p">]);</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Control</span><span class="p">.</span><span class="nx">LayerSwitcher</span><span class="p">());</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">LonLat</span><span class="p">(</span><span class="mi">13</span><span class="o">,</span><span class="mi">42</span><span class="p">)</span><span class="o">,</span><span class="mi">6</span><span class="p">);</span>
+            <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body</span> <span class="na">onload=</span><span class="s">&quot;init()&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Avvistamenti in Italia<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;map&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Sono stati inseriti {{num_avvistamenti}} avvistamenti.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="slide" id="creazione-di-una-vista-regionale-e-caricamento-dei-dati-appartenenti-a-una-regione">
+<h1>8.1 creazione di una vista regionale e caricamento dei dati appartenenti a una regione</h1>
+<p>(urls.py)</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">:</span>
+    <span class="p">(</span><span class="s">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="c"># indirizzi non soggetti ad autenticazione</span>
+    <span class="p">(</span><span class="s">r&#39;^avvistamenti/&#39;</span><span class="p">,</span> <span class="n">avvistamenti</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^kml/&#39;</span><span class="p">,</span> <span class="n">all_kml</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">italia</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^regione/(?P&lt;id&gt;[0-9]*)/&#39;</span><span class="p">,</span> <span class="n">regione</span><span class="p">),</span>
+    <span class="o">...</span>
+</pre></div>
+<p>(fauna/views.py)</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">regione</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;vista con zoom su regione e l&#39;elenco dei punti di avvistamento inseriti nel sistema per la regione in questione&quot;&quot;&quot;</span>
+    <span class="n">regione</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Regione</span><span class="p">,</span> <span class="n">codice</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+    <span class="n">avvistamenti</span> <span class="o">=</span> <span class="n">Avvistamento</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">geometry__intersects</span><span class="o">=</span><span class="n">regione</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&quot;regione.html&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s">&#39;regione&#39;</span><span class="p">:</span> <span class="n">regione</span><span class="p">,</span> <span class="s">&#39;avvistamenti&#39;</span><span class="p">:</span> <span class="n">avvistamenti</span> <span class="p">})</span>
+</pre></div>
+</div>
+<div class="slide" id="id8">
+<h1>8.2 creazione di una mappa dell'italia e caricamento del kml con OpenLayers</h1>
+<p>(fauna/templates/regione.html)</p>
+<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://openlayers.org/api/OpenLayers.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span> <span class="nf">#map</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span><span class="m">400px</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">400px</span><span class="p">;</span> <span class="p">}</span> <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+        <span class="k">var</span> <span class="nx">map</span><span class="o">,</span> <span class="nx">base_layer</span><span class="o">,</span> <span class="nx">kml</span><span class="o">;</span>
+        <span class="k">var</span> <span class="nx">ms_url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/geodjango-tutorial/foss4git/mapserver/italia.map&amp;&quot;</span>
+        <span class="k">function</span> <span class="nx">init</span><span class="p">(){</span>
+            <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="s1">&#39;map&#39;</span><span class="p">);</span>
+            <span class="nx">base_layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span> <span class="s2">&quot;OpenLayers WMS&quot;</span><span class="o">,</span>
+               <span class="s2">&quot;http://labs.metacarta.com/wms/vmap0&quot;</span><span class="o">,</span> <span class="p">{</span><span class="nx">layers</span><span class="o">:</span> <span class="s1">&#39;basic&#39;</span><span class="p">}</span> <span class="p">);</span>
+            <span class="k">var</span> <span class="nx">regioni</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span><span class="s2">&quot;Regioni&quot;</span><span class="o">,</span>
+               <span class="nx">ms_url</span><span class="o">,</span> <span class="p">{</span><span class="nx">layers</span> <span class="o">:</span> <span class="s1">&#39;regioni&#39;</span><span class="p">}</span> <span class="p">);</span>
+            <span class="k">var</span> <span class="nx">format</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Format</span><span class="p">.</span><span class="nx">GeoJSON</span><span class="p">()</span>
+            <span class="nx">regione</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">read</span><span class="p">({{</span> <span class="nx">regione</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">geojson</span><span class="o">|</span><span class="nx">safe</span><span class="p">}})[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="c">// We mark it &#39;safe&#39; so that Django doesn&#39;t escape the quotes.</span>
+            <span class="nx">regione</span><span class="p">.</span><span class="nx">attributes</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;nome&#39;</span><span class="o">:</span> <span class="s2">&quot;{{regione.nome}}&quot;</span><span class="o">,</span> <span class="s1">&#39;type&#39;</span><span class="o">:</span> <span class="s1">&#39;regione&#39;</span><span class="p">};</span>
+            <span class="nx">vectors</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">Vector</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">);</span>
+            <span class="nx">vectors</span><span class="p">.</span><span class="nx">addFeatures</span><span class="p">(</span><span class="nx">regione</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">points</span><span class="p">.</span><span class="nx">length</span><span class="o">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">point</span> <span class="o">=</span> <span class="nx">format</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">points</span><span class="p">[</span><span class="nx">i</span><span class="p">])[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="nx">point</span><span class="p">.</span><span class="nx">attributes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="o">:</span><span class="s1">&#39;point&#39;</span><span class="p">};</span>
+                <span class="nx">vectors</span><span class="p">.</span><span class="nx">addFeatures</span><span class="p">(</span><span class="nx">point</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">addLayers</span><span class="p">([</span><span class="nx">base_layer</span><span class="o">,</span> <span class="nx">regioni</span><span class="o">,</span> <span class="nx">vectors</span><span class="p">]);</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Control</span><span class="p">.</span><span class="nx">LayerSwitcher</span><span class="p">());</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">zoomToExtent</span><span class="p">(</span><span class="nx">regione</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">());</span>
+<span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body</span> <span class="na">onload=</span><span class="s">&quot;init()&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Avvistamenti nella regione: {{ regione.nome}}<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;map&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    In questa regione ci sono stati {{avvistamenti.count}} avvistamenti.<span class="nt">&lt;br&gt;</span>
+    <span class="nt">&lt;script&gt;</span> <span class="k">var</span> <span class="nx">points</span> <span class="o">=</span> <span class="p">[];</span> <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+    {% for avvistamento in avvistamenti %}
+        <span class="nt">&lt;li&gt;</span>{{ avvistamento.data }}, {{ avvistamento.animale.nome }}<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;script&gt;</span><span class="nx">points</span><span class="p">.</span><span class="nx">push</span><span class="p">({{</span><span class="nx">avvistamento</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">geojson</span><span class="o">|</span><span class="nx">safe</span><span class="p">}});</span><span class="nt">&lt;/script&gt;</span>
+    {% endfor %}
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="slide" id="creazione-di-un-modello-sandbox-per-testare-le-api-di-geodjango">
+<h1>9. creazione di un modello sandbox per testare le API di GeoDjango</h1>
+<p>(fauna/models.py)</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">SandboxLayer</span><span class="p">(</span><span class="n">gismodels</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modello spaziale per effettuare test con l&#39;API GeoDjango&quot;&quot;&quot;</span>
+    <span class="n">nome</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">GeometryField</span><span class="p">(</span><span class="n">srid</span><span class="o">=</span><span class="mf">3395</span><span class="p">)</span> <span class="c"># WGS84 mercatore</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">gismodels</span><span class="o">.</span><span class="n">GeoManager</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nome</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="slide" id="uso-delle-api">
+<h1>10. uso delle API</h1>
+<ul class="simple">
+<li>uso dell'API: metodi CRUD</li>
+<li>uso dell'API GEOS</li>
+<li>uso dell'API GDAL/OGR</li>
+<li>uso dell'API Measurement Units</li>
+</ul>
+</div>
+<div class="slide" id="risorse-aggiuntive">
+<h1>Risorse aggiuntive</h1>
+<ul>
+<li><p class="first">sito progetto Django: <a class="reference external" href="http://www.djangoproject.com/">http://www.djangoproject.com/</a></p>
+</li>
+<li><p class="first">sito progetto GeoDjango: <a class="reference external" href="http://geodjango.org/">http://geodjango.org/</a></p>
+</li>
+<li><p class="first">GeoDjango basic applications: <a class="reference external" href="http://code.google.com/p/geodjango-basic-apps/">http://code.google.com/p/geodjango-basic-apps/</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>questo tutorial: (TODO)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://github.com/capooti/geodjango-tutorial">http://github.com/capooti/geodjango-tutorial</a></li>
+<li><a class="reference external" href="http://github.com/elpaso/geodjango-tutorial">http://github.com/elpaso/geodjango-tutorial</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

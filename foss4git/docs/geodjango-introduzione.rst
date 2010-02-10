@@ -2,11 +2,11 @@
 Introduzione a GeoDjango
 ========================
 
-* Django: The Web framework for perfectionists with deadlines
-* GeoDjango: The Geographic Web Framework for perfectionists with deadlines
-* dalla versione 1.0 di Django fa parte dei core packages disponibili di base
+* **Django**: The Web framework for perfectionists with deadlines
+* **GeoDjango**: The Geographic Web Framework for perfectionists with deadlines
+* dalla versione 1.0 di Django fa parte dei **core packages** disponibili di base
 * è un insieme di API, utility e tool che consente di creare GIS application con Django
-* come Django puo' essere utilizzato sia in ambito web che in ambito desktop
+* come Django puo' essere utilizzato sia in ambito **web** che in ambito **desktop**
 
 
 Indice
@@ -43,8 +43,8 @@ Panoramica delle funzionalita' disponibili con GeoDjango
 ========================================================
 
 * 1. GeoDjango Model API (Geometry Field, GeoManager, geo-CRUD)
-* 2. GEOS API
-* 3. GDAL OGR API
+* 2. GEOS API (operatori spaziali secondo OGC Simple Feature)
+* 3. GDAL OGR API (accesso a dati esterni)
 * 4. Measurement Units API
 * 5. GeoModelAdmin
 * 6. Alcune utilities: LayerMapping, OgrInspect
@@ -56,20 +56,16 @@ Panoramica delle funzionalita' disponibili con GeoDjango
 
     Geometry Field (django.contrib.gis.db estende django.db)
     
-* PointField
-* LineStringField
-* PolygonField
-* MultiPointField
-* MultiLineStringField
-* MultiPolygonField
+* PointField, LineStringField, PolygonField
+* MultiPointField, MultiLineStringField, MultiPolygonField
 * GeometryCollectionField
 * GeometryField <novità 1.2>
 
     Opzioni Geometry Field
     
-* srid (default 4326, ovvero WGS84 dd)
-* dim (default 2, con 3 supporto z) <novità 1.2>
-* spatial_index (default True, crea l'indice spaziale)
+* **srid** (default 4326, ovvero WGS84 dd)
+* **dim** (default 2, con 3 supporto z) <novità 1.2>
+* **spatial_index** (default True, crea l'indice spaziale)
 
 
 1.2 GeoDjango Model API (Geometry Field e GeoManager)
@@ -172,7 +168,7 @@ Panoramica delle funzionalita' disponibili con GeoDjango
 L'interfaccia GEOS in GeoDjango offre principalmente due vantaggi
     
     * 1. mapping delle geometrie secondo le specifiche OGC Simple Feature Access
-    * 2. funzionalità geometriche e topologiche
+    * 2. funzionalità geometriche, topologiche e di geoprocessing
     
     
 2.1 GEOS API: Simple Feature Access
@@ -191,11 +187,11 @@ L'interfaccia GEOS in GeoDjango offre principalmente due vantaggi
 
     2. Funzionalità geometriche e topologiche
 
-* Proprietà geometriche (empty, geom_type, hasz, num_coords, simple, valid...)
-* Proprietà rappresentative (ewkt, hex, hexewkb, json, geojson, kml, ogr, wkb, ewkb, wkt)
-* Predicati spaziali (contains, crosses, equals, intersects, touches, within, ...)
-* Metodi topologici (buffer, difference, intersection, simplify, union, ...)
-* Altre proprietà e metodi (centroid, envelope, area, distance, length, srs, transform)
+* **Proprietà geometriche** (empty, geom_type, hasz, num_coords, simple, valid...)
+* **Proprietà rappresentative** (ewkt, hex, hexewkb, json, geojson, kml, ogr, wkb, ewkb, wkt)
+* **Predicati spaziali e topologici** (contains, crosses, equals, intersects, touches, within, ...)
+* **Metodi di geoprocessing** (buffer, difference, intersection, simplify, union, ...)
+* **Altre proprietà e metodi** (centroid, envelope, area, distance, length, srs, transform)
 
 
 2.3 GEOS API: Esempio 1
@@ -224,7 +220,7 @@ L'interfaccia GEOS in GeoDjango offre principalmente due vantaggi
 2.4 GEOS API: Esempio 2
 =======================    
 
-    Predicati spaziali, trasformazioni (richiede GDAL), metodi topologici
+    Predicati spaziali, trasformazioni (richiede GDAL), metodi di geoprocessing
     
 .. sourcecode:: python
     
@@ -251,12 +247,11 @@ L'interfaccia GEOS in GeoDjango offre principalmente due vantaggi
     
 Caratteristiche:
 
-* è facoltativa per GeoDjango (obbligatoria per accesso a srs e trasformazioni e per LayerMapping)
-* permette, mediante la classe di ingresso DataSource, l'accesso a tutti i formati OGR, in molti casi in lettura/scrittura
-* consente l'accesso alle informazioni sulle feature che compongono il DataSource
-* nelle funzionalità è simile all'unione dell'API di GeoDjango e GEOS viste in precedenza
-* per accesso ai dati non sul database di GeoDjango è più efficiente
-* è possibile ottenere una GEOSGeometry mediante il metodo geos di OGRGeometry
+* è **facoltativa** per GeoDjango (obbligatoria per accesso a srs e trasformazioni e per LayerMapping)
+* permette, mediante la classe di ingresso **DataSource**, l'accesso a tutti i formati **OGR**, in molti casi in lettura/scrittura
+* consente l'accesso alle informazioni sulle **feature** che compongono il DataSource
+* nelle funzionalità è simile alla combinazione dell'API di GeoDjango e GEOS viste in precedenza
+* è possibile ottenere una **GEOSGeometry** mediante il metodo geos di **OGRGeometry**
 * oppure si possono usare le proprietà rappresentative (wkt, wkb, json, ...)
 
 
@@ -459,10 +454,11 @@ A partire dall'applicazione creata in precedenza:
 ===========================
 
     GeoDjango è un'applicazione Django
-    
+
+(settings.py)
+
 .. sourcecode:: python
 
-    (settings.py)
     INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -473,12 +469,14 @@ A partire dall'applicazione creata in precedenza:
         'django.contrib.gis',
     )
 
-2. Aggiunta del campo geografico e del GeoManager nel modello (1)
-=================================================================
+2.1 Aggiunta del campo geografico e del GeoManager nel modello
+==============================================================
 
 Eliminare la tabella fauna_avvistamento (va rigenerata con il nuovo campo)
 
 Inserire il campo geografico e il GeoManager nel modello
+
+(fauna/models.py)
 
 .. sourcecode:: python
 
@@ -493,8 +491,8 @@ Inserire il campo geografico e il GeoManager nel modello
         geometry = gismodels.PointField(srid=4326)
         objects = gismodels.GeoManager()
         
-2. Aggiunta del campo geografico e del GeoManager nel modello (2)
-=================================================================
+2.2 Aggiunta del campo geografico e del GeoManager nel modello
+==============================================================
 
     Verifichiamo l'output e sincronizziamo
     
@@ -523,6 +521,8 @@ Inserire il campo geografico e il GeoManager nel modello
     
 3. GeoModelAdmin: gestione di dati geografici con l'admin
 =========================================================
+
+(fauna/admin.py)
 
 .. sourcecode:: python    
     
@@ -579,9 +579,10 @@ Inserire il campo geografico e il GeoManager nel modello
     Creiamo il modello con i campi che abbiamo deciso di importare,
     analizziamo gli oggetti che verranno prodotti sul db e sincronizziamo
     
+(fauna/models.py)
+
 .. sourcecode:: python
     
-    (models.py)
     class Regione(gismodels.Model):
         """Modello spaziale per rappresentare le regioni"""
         codice = gismodels.IntegerField()
@@ -597,7 +598,9 @@ Inserire il campo geografico e il GeoManager nel modello
 ==========================================================
 
     Creiamo uno script di importazione
-    
+
+(carica_dati.py)
+
 .. sourcecode:: python
 
     import os
@@ -665,7 +668,7 @@ questa utility consente di:
         (r'^kml/', all_kml),
         ...
 
-(views.py)
+(fauna/views.py)
 
 .. sourcecode:: python   
     
@@ -678,16 +681,164 @@ questa utility consente di:
         avvistamenti  = Avvistamento.objects.kml()
         return render_to_kml("gis/kml/placemarks.kml", {'places' : avvistamenti})
 
-7. creazione di una mappa dell'italia e caricamento del kml con OpenLayers
-==========================================================================
+
+7.1 creazione di una mappa dell'italia e caricamento del kml con OpenLayers
+===========================================================================
+
+(urls.py)
+
+.. sourcecode:: python
+
+    urlpatterns = patterns('',
+        ...:
+        (r'^admin/', include(admin.site.urls)),
+        # indirizzi non soggetti ad autenticazione
+        (r'^avvistamenti/', avvistamenti),
+        (r'^kml/', all_kml),
+        (r'^$', italia),
+        ...
+
+(fauna/views.py)
+
+.. sourcecode:: python
+
+    def italia(request):
+        """vista con zoom su italia e il numero dei punti di avvistamento inseriti nel sistema"""
+        num_avvistamenti = Avvistamento.objects.all().count()
+        return render_to_response('italia.html', {'num_avvistamenti' : num_avvistamenti})
+        
+        
+7.1 creazione di una mappa dell'italia e caricamento del kml con OpenLayers
+===========================================================================
+
+(fauna/templates/italia.html)
+
+.. sourcecode:: html
+
+    <html>
+      <head>
+        <script src="/static/openlayers/lib/OpenLayers.js"></script>
+        <style type="text/css"> #map { width:500px; height: 500px; } </style>
+        <script type="text/javascript">
+            var map, base_layer, kml;
+            var ms_url = "http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/geodjango-tutorial/foss4git/mapserver/italia.map&"
+            function init(){
+                map = new OpenLayers.Map('map');
+                base_layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                   "http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
+                var regioni = new OpenLayers.Layer.WMS("Regioni",
+                   ms_url, {layers : 'regioni'} );
+                kml = new OpenLayers.Layer.GML("KML", "/kml", 
+                   { format: OpenLayers.Format.KML });
+                map.addLayers([base_layer, regioni, kml]);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                map.setCenter(new OpenLayers.LonLat(13,42),6); 
+                }
+        </script>
+      </head>
+      <body onload="init()">
+        <h3>Avvistamenti in Italia</h3>
+        <div id="map"></div>
+        <p>Sono stati inseriti {{num_avvistamenti}} avvistamenti.</p>
+      </body>
+    </html>
 
 
-8. creazione di una vista regionale e caricamento dei dati appartenenti a una regione
-=====================================================================================
+8.1 creazione di una vista regionale e caricamento dei dati appartenenti a una regione
+======================================================================================
+
+(urls.py)
+
+.. sourcecode:: python
+
+    urlpatterns = patterns('',
+        ...:
+        (r'^admin/', include(admin.site.urls)),
+        # indirizzi non soggetti ad autenticazione
+        (r'^avvistamenti/', avvistamenti),
+        (r'^kml/', all_kml),
+        (r'^$', italia),
+        (r'^regione/(?P<id>[0-9]*)/', regione),
+        ...
+
+(fauna/views.py)
+
+.. sourcecode:: python
+
+    def regione(request, id):
+        """vista con zoom su regione e l'elenco dei punti di avvistamento inseriti nel sistema per la regione in questione"""
+        regione = get_object_or_404(Regione, codice=id)
+        avvistamenti = Avvistamento.objects.filter(geometry__intersects=regione.geometry)
+        return render_to_response("regione.html", { 'regione': regione, 'avvistamenti': avvistamenti })
+        
+        
+8.2 creazione di una mappa dell'italia e caricamento del kml con OpenLayers
+===========================================================================
+
+(fauna/templates/regione.html)
+
+.. sourcecode:: html
+
+    <html>
+      <head>
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+        <style type="text/css"> #map { width:400px; height: 400px; } </style>
+        <script type="text/javascript">
+            var map, base_layer, kml;
+            var ms_url = "http://localhost/cgi-bin/mapserv?map=/home/geodjango/tutorial/django-1.2-alpha-1-env/geodjango-tutorial/foss4git/mapserver/italia.map&"
+            function init(){
+                map = new OpenLayers.Map('map');
+                base_layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                   "http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
+                var regioni = new OpenLayers.Layer.WMS("Regioni",
+                   ms_url, {layers : 'regioni'} );
+                var format = new OpenLayers.Format.GeoJSON()
+                regione = format.read({{ regione.geometry.geojson|safe}})[0]; 
+                // We mark it 'safe' so that Django doesn't escape the quotes.
+                regione.attributes = { 'nome': "{{regione.nome}}", 'type': 'regione'}; 
+                vectors = new OpenLayers.Layer.Vector("Data");
+                vectors.addFeatures(regione); 
+                for (var i = 0; i < points.length; i++) {
+                    point = format.read(points[i])[0]; 
+                    point.attributes = {'type':'point'}; 
+                    vectors.addFeatures(point);
+                }
+                map.addLayers([base_layer, regioni, vectors]);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                map.zoomToExtent(regione.geometry.getBounds());
+    }
+        </script>
+      </head>
+      <body onload="init()">
+        <h3>Avvistamenti nella regione: {{ regione.nome}}</h3>
+        <div id="map"></div>
+        In questa regione ci sono stati {{avvistamenti.count}} avvistamenti.<br>
+        <script> var points = []; </script>
+        <ul>
+        {% for avvistamento in avvistamenti %}
+            <li>{{ avvistamento.data }}, {{ avvistamento.animale.nome }}</li>
+            <script>points.push({{avvistamento.geometry.geojson|safe}});</script>
+        {% endfor %}
+        </ul>
+      </body>
+    </html>
 
 
 9. creazione di un modello sandbox per testare le API di GeoDjango
 ==================================================================
+
+(fauna/models.py)
+
+.. sourcecode:: python
+
+    class SandboxLayer(gismodels.Model):
+        """Modello spaziale per effettuare test con l'API GeoDjango"""
+        nome = gismodels.CharField(max_length=50)
+        geometry = gismodels.GeometryField(srid=3395) # WGS84 mercatore
+        objects = gismodels.GeoManager()
+
+        def __unicode__(self):
+            return '%s' % (self.nome)
 
 10. uso delle API
 =================
